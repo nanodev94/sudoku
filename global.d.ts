@@ -6,3 +6,5 @@ declare module 'next-intl' {
     Messages: typeof messages
   }
 }
+
+declare module 'next-compose-plugins'

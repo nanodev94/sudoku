@@ -1,4 +1,5 @@
 import type { NextRequest, NextResponse } from 'next/server'
+
 import intlMiddleware from './middlewares/intlMiddleware'
 
 const middleware = (req: NextRequest): NextResponse => {

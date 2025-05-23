@@ -1,5 +1,5 @@
-import withPlugins from 'next-compose-plugins'
 import type { NextConfig } from 'next'
+import withPlugins from 'next-compose-plugins'
 import createNextIntlPlugin from 'next-intl/plugin'
 
 const nextIntlPlugin = createNextIntlPlugin()
