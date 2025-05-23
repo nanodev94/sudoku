@@ -1,13 +1,5 @@
-import { useTranslations } from 'next-intl'
+import HomeView from '@/views/HomeView'
 
 export default function Home() {
-  const t = useTranslations()
-
-  return (
-    <div>
-      <main>
-        <span>{t('test')}</span>
-      </main>
-    </div>
-  )
+  return <HomeView />
 }

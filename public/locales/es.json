@@ -1,6 +1,7 @@
 {
-  "test": "Prueba",
-  "s": {
-    "b": "Prueba"
+  "home": {
+    "history": "Historial",
+    "play": "Jugar",
+    "title": "SUDOKU"
   }
 }

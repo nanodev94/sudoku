@@ -1,0 +1,48 @@
+'use client'
+
+import { useTranslations } from 'next-intl'
+
+import Button from '@/components/Button'
+import { PAGE } from '@/constants'
+import { useRouter } from '@/i18n/navigation'
+
+const HomeView = () => {
+  const t = useTranslations('home')
+  const { push } = useRouter()
+
+  const handlePlayClick = () => {
+    push(PAGE.GAME)
+  }
+
+  const handleHistoryClick = () => {
+    push(PAGE.HISTORY)
+  }
+
+  return (
+    <div className='bg-gray-700 p-16 m-auto max-w-160 w-full h-fit flex flex-col items-center gap-8 rounded-xl'>
+      <span className='font-bold text-6xl sm:text-8xl'>{t('title')}</span>
+      <div className='flex flex-col gap-6 w-60'>
+        <Button
+          className='text-3xl font-bold py-6'
+          hoverEffect
+          onClick={handlePlayClick}
+          large
+          rounded
+        >
+          {t('play')}
+        </Button>
+        <Button
+          className='text-3xl font-bold py-6'
+          hoverEffect
+          onClick={handleHistoryClick}
+          large
+          rounded
+        >
+          {t('history')}
+        </Button>
+      </div>
+    </div>
+  )
+}
+
+export default HomeView

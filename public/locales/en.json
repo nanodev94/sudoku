@@ -1,6 +1,7 @@
 {
-  "test": "Test",
-  "s": {
-    "b": "Test"
+  "home": {
+    "history": "History",
+    "play": "Play",
+    "title": "SUDOKU"
   }
 }
