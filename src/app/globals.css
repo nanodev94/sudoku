@@ -7,8 +7,29 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
+    --background: #222222;
     --foreground: #ededed;
+  }
+}
+
+@theme {
+  --color-button-primary: rgb(42, 120, 255);
+  --color-button-secondary: rgb(206, 123, 0);
+  --color-button-hover: rgb(0, 37, 150);
+  --color-field: rgb(0, 0, 0);
+  --color-field-block: rgb(207, 124, 0);
+  --color-field-hover: rgb(0, 37, 150);
+  --color-header: rgb(0, 20, 150);
+  --color-link-color: rgb(255, 0, 0);
+
+  --animate-scale: scale 300ms ease-in-out;
+  @keyframes scale {
+    0% {
+      transform: scale(0);
+    }
+    100% {
+      transform: rotate(1);
+    }
   }
 }
 
