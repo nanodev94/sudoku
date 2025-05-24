@@ -4,5 +4,8 @@
     "play": "Play",
     "title": "SUDOKU"
   },
-  "movements": "Movements:"
+  "game": {
+    "movements": "Movements:",
+    "clear": "Clear"
+  }
 }
