@@ -10,13 +10,9 @@ const HomeView = () => {
   const t = useTranslations('home')
   const { push } = useRouter()
 
-  const handlePlayClick = () => {
-    push(PAGE.GAME)
-  }
+  const handlePlayClick = () => push(PAGE.GAME)
 
-  const handleHistoryClick = () => {
-    push(PAGE.HISTORY)
-  }
+  const handleHistoryClick = () => push(PAGE.HISTORY)
 
   return (
     <div className='bg-gray-700 p-16 m-auto max-w-160 w-full h-fit flex flex-col items-center gap-8 rounded-xl'>

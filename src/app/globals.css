@@ -16,6 +16,8 @@
   --color-button-primary: rgb(42, 120, 255);
   --color-button-secondary: rgb(206, 123, 0);
   --color-button-hover: rgb(255, 0, 0);
+  --color-field-block: rgb(206, 123, 0);
+  --color-field-hover: rgb(255, 0, 0);
   --color-header: rgb(0, 20, 150);
   --color-link-color: rgb(255, 0, 0);
 }
