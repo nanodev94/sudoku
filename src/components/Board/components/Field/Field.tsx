@@ -2,6 +2,7 @@ import clsx from 'clsx'
 
 import { EMPTY_FIELD, FIELD_VALID_NUMBERS } from '@/constants'
 import useGameStore from '@/stores/game.store'
+import { isValidField } from '@/utils/board'
 
 interface Props {
   row: number
@@ -13,6 +14,7 @@ interface Props {
 const Field = ({ row, col, value, className }: Props) => {
   const {
     initialBoard,
+    gameBoard,
     actions: { setField },
   } = useGameStore()
 
@@ -20,8 +22,11 @@ const Field = ({ row, col, value, className }: Props) => {
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newValue = parseInt(e.target.value) || EMPTY_FIELD
-    // TODO: compute if the number is valid based on sudoku rules
-    if (newValue === EMPTY_FIELD || FIELD_VALID_NUMBERS.includes(newValue)) {
+    const isValid =
+      FIELD_VALID_NUMBERS.includes(newValue) &&
+      isValidField({ row, col, value: newValue }, gameBoard)
+
+    if (newValue === EMPTY_FIELD || isValid) {
       setField(row, col, newValue)
     }
   }
