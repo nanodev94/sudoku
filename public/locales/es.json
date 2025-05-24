@@ -5,6 +5,7 @@
     "title": "SUDOKU"
   },
   "game": {
+    "back": "Volver",
     "movements": "Movimientos:",
     "clear": "Limpiar"
   }

@@ -2,8 +2,10 @@
 
 import { useTranslations } from 'next-intl'
 
+import BackLink from '@/components/BackLink'
 import Board from '@/components/Board'
 import Button from '@/components/Button'
+import { PAGE } from '@/constants'
 import useGameStore from '@/stores/game.store'
 
 const GameView = () => {
@@ -17,6 +19,7 @@ const GameView = () => {
 
   return (
     <div className='bg-blue-500 m-auto p-12 rounded-2xl'>
+      <BackLink href={PAGE.HOME}>{t('back')}</BackLink>
       <p className='text-xl font-bold py-5'>
         {t('movements')} {movements}
       </p>
