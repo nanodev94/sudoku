@@ -18,14 +18,16 @@ const GameView = () => {
   const handleClearClick = () => clearGameBoard()
 
   return (
-    <div className='bg-blue-500 m-auto p-12 rounded-2xl'>
+    <div className='bg-gray-700 m-auto p-12 rounded-2xl'>
       <BackLink href={PAGE.HOME}>{t('back')}</BackLink>
-      <p className='text-xl font-bold py-5'>
+      <p className='text-center text-xl font-bold py-5'>
         {t('movements')} {movements}
       </p>
       <Board />
       <div className='p-8 flex items-center justify-center gap-4'>
-        <Button onClick={handleClearClick}>{t('clear')}</Button>
+        <Button onClick={handleClearClick} rounded hoverEffect>
+          {t('clear')}
+        </Button>
       </div>
     </div>
   )

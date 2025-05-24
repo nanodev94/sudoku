@@ -35,7 +35,7 @@ const Field = ({ row, col, value, className }: Props) => {
     <input
       className={clsx(
         'border-2 size-20 text-center font-bold text-2xl [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none',
-        isInitialField ? 'bg-field-block' : 'bg-gray-600',
+        isInitialField ? 'bg-field-block' : 'bg-field',
         value === EMPTY_FIELD && 'hover:bg-field-hover duration-300',
         className
       )}

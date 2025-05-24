@@ -25,7 +25,7 @@ export default async function RootLayout({ children, params }: Props) {
     <NextIntlClientProvider>
       <html lang={locale}>
         <body className='flex flex-col min-h-screen'>
-          <main className='bg-amber-800 flex grow p-4'>{children}</main>
+          <main className='flex grow p-4'>{children}</main>
           <footer>
             <span>
               @Copyright 2025 -{' '}

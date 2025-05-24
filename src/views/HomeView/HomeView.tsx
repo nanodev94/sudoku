@@ -15,7 +15,7 @@ const HomeView = () => {
   const handleHistoryClick = () => push(PAGE.HISTORY)
 
   return (
-    <div className='bg-gray-700 p-16 m-auto max-w-160 w-full h-fit flex flex-col items-center gap-8 rounded-xl'>
+    <div className='bg-gray-700 p-16 m-auto max-w-160 w-full h-fit flex flex-col items-center gap-8 rounded-xl animate-scale'>
       <span className='font-bold text-6xl sm:text-8xl'>{t('title')}</span>
       <div className='flex flex-col gap-6 w-60'>
         <Button
