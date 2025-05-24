@@ -6,6 +6,7 @@ import { copyBoard } from '@/utils/board'
 type GameStore = {
   initialBoard: number[][]
   gameBoard: number[][]
+  movements: number
   actions: {
     reset: () => void
     initGame: (board: number[][]) => void
@@ -16,21 +17,24 @@ type GameStore = {
 const useGameStore = create<GameStore>()(set => ({
   initialBoard: copyBoard(EMPTY_BOARD),
   gameBoard: copyBoard(EMPTY_BOARD),
+  movements: 0,
   actions: {
     reset: () =>
       set(() => ({
         initialBoard: copyBoard(EMPTY_BOARD),
         gameBoard: copyBoard(EMPTY_BOARD),
+        movements: 0,
       })),
     initGame: board =>
       set(() => ({
         initialBoard: copyBoard(board),
         gameBoard: copyBoard(board),
+        movements: 0,
       })),
     setField: (row, col, val) =>
       set(state => {
         state.gameBoard[row][col] = val
-        return { gameBoard: state.gameBoard }
+        return { gameBoard: state.gameBoard, movements: state.movements + 1 }
       }),
   },
 }))
