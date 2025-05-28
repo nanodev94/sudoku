@@ -8,5 +8,10 @@
     "back": "Volver",
     "movements": "Movimientos:",
     "clear": "Limpiar"
+  },
+  "history": {
+    "back": "Volver",
+    "title": "Historial",
+    "completed": "COMPLETADO"
   }
 }
