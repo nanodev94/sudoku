@@ -8,5 +8,10 @@
     "back": "Go back",
     "movements": "Movements:",
     "clear": "Clear"
+  },
+  "history": {
+    "back": "Go back",
+    "title": "History",
+    "completed": "COMPLETED"
   }
 }

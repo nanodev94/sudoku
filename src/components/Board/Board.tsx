@@ -19,7 +19,7 @@ const Board = () => {
   }, [initGame])
 
   return (
-    <div className='bg-green-700 flex flex-col border-8'>
+    <div className='flex flex-col border-8'>
       {gameBoard.map((row, rowIndex) => (
         <div
           className='flex [&:nth-child(3n):nth-last-child(n+2)]:border-b-8'
