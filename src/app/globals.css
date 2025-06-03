@@ -20,7 +20,7 @@
   --color-field-block: rgb(207, 124, 0);
   --color-field-hover: rgb(0, 37, 150);
   --color-header: rgb(0, 20, 150);
-  --color-link-color: rgb(255, 0, 0);
+  --color-link-hover-color: rgb(255, 0, 0);
 
   --animate-scale: scale 300ms ease-in-out;
   @keyframes scale {

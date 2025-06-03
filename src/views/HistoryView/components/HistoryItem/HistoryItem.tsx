@@ -16,7 +16,7 @@ const HistoryItem = ({ id, completed, date }: Props) => {
   const t = useTranslations('history')
 
   return (
-    <div className='flex items-center justify-between bg-gray-500 p-8 rounded-xl'>
+    <div className='flex items-center justify-between bg-gray-500 cursor-default p-8 rounded-xl'>
       <span>
         #{id} - <span>{formatDate(locale, date)}</span>
       </span>
