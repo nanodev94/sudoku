@@ -1,3 +1,5 @@
+import { FIELD_VALID_NUMBERS } from '@/constants'
+
 export const copyBoard = (board: number[][]) => {
   return board.map(row => row.slice())
 }
@@ -22,6 +24,9 @@ export const isValidField = (
   board: number[][]
 ) => {
   const { row, col, value } = field
+
+  // Invalid number
+  if (!FIELD_VALID_NUMBERS.includes(value)) return false
 
   // Row contains value
   if (board[row].includes(value)) return false

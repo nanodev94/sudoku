@@ -1,23 +1,18 @@
-'use client'
-
-import { useEffect } from 'react'
-
-import useGameStore from '@/stores/game.store'
-import { getRandomBoard } from '@/utils/board'
+import { EMPTY_FIELD } from '@/constants'
 
 import Field from './components/Field'
 
-const Board = () => {
-  const {
-    gameBoard,
-    actions: { initGame },
-  } = useGameStore()
+interface Props {
+  gameBoard: number[][]
+  initialBoard?: number[][]
+  onFieldChange?: (
+    e: React.ChangeEvent<HTMLInputElement>,
+    row: number,
+    col: number
+  ) => void
+}
 
-  useEffect(() => {
-    const board = getRandomBoard()
-    initGame(board)
-  }, [initGame])
-
+const Board = ({ gameBoard, initialBoard, onFieldChange }: Props) => {
   return (
     <div className='flex flex-col border-8'>
       {gameBoard.map((row, rowIndex) => (
@@ -32,6 +27,8 @@ const Board = () => {
               row={rowIndex}
               col={colIndex}
               value={fieldVal}
+              isInitial={initialBoard?.[rowIndex][colIndex] !== EMPTY_FIELD}
+              onFieldChange={onFieldChange}
             />
           ))}
         </div>
