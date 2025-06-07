@@ -4,6 +4,10 @@ export const copyBoard = (board: number[][]) => {
   return board.map(row => row.slice())
 }
 
+export const checkBoardCompleted = (board: number[][]) => {
+  return !board.some(row => row.some(value => value === -1))
+}
+
 export const getRandomBoard = () => {
   // TODO: get random board
   return [

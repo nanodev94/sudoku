@@ -9,7 +9,11 @@ import Button from '@/components/Button'
 import { EMPTY_FIELD, PAGE } from '@/constants'
 import useGameStore from '@/stores/game.store'
 import useHistoryStore from '@/stores/history.store'
-import { getRandomBoard, isValidField } from '@/utils/board'
+import {
+  checkBoardCompleted,
+  getRandomBoard,
+  isValidField,
+} from '@/utils/board'
 
 const GameView = () => {
   const t = useTranslations('game')
@@ -24,7 +28,7 @@ const GameView = () => {
 
   const {
     games,
-    actions: { addGame, addMovementToGame, clearGame },
+    actions: { addGame, addMovementToGame, clearGame, completeGame },
   } = useHistoryStore()
 
   // Init game
@@ -71,6 +75,10 @@ const GameView = () => {
 
       addMovementToGame(id, movement)
       setField(row, col, newValue)
+
+      if (checkBoardCompleted(gameBoard)) {
+        completeGame(id)
+      }
     }
   }
 
