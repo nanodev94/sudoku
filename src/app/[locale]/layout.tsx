@@ -23,8 +23,8 @@ export default async function RootLayout({ children, params }: Props) {
   const { locale } = await params
 
   return (
-    <ContextWrapper>
-      <NextIntlClientProvider>
+    <NextIntlClientProvider>
+      <ContextWrapper>
         <html lang={locale}>
           <body className='flex flex-col min-h-screen'>
             <main className='flex grow p-4'>{children}</main>
@@ -42,7 +42,7 @@ export default async function RootLayout({ children, params }: Props) {
             </footer>
           </body>
         </html>
-      </NextIntlClientProvider>
-    </ContextWrapper>
+      </ContextWrapper>
+    </NextIntlClientProvider>
   )
 }

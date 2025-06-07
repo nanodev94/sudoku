@@ -13,5 +13,6 @@
     "back": "Volver",
     "title": "Historial",
     "completed": "COMPLETADO"
-  }
+  },
+  "loading": "Cargando..."
 }

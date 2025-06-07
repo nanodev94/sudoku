@@ -13,5 +13,6 @@
     "back": "Go back",
     "title": "History",
     "completed": "COMPLETED"
-  }
+  },
+  "loading": "Loading..."
 }
