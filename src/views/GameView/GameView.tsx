@@ -24,7 +24,7 @@ const GameView = () => {
 
   const {
     games,
-    actions: { addGame, addMovementToGame },
+    actions: { addGame, addMovementToGame, clearGame },
   } = useHistoryStore()
 
   // Init game
@@ -49,7 +49,10 @@ const GameView = () => {
     addGame(game)
   }, [])
 
-  const handleClearClick = () => clearGameBoard()
+  const handleClearClick = () => {
+    clearGameBoard()
+    clearGame(id)
+  }
 
   const handleFieldChange = (
     e: React.ChangeEvent<HTMLInputElement>,

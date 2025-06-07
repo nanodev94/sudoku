@@ -26,6 +26,7 @@ type HistoryStore = {
     setGames: (games: Game[]) => void
     addGame: (game: Game) => void
     addMovementToGame: (gameId: number, movement: GameMovement) => void
+    clearGame: (gameId: number) => void
   }
 }
 
@@ -54,6 +55,21 @@ const useHistoryStore = create<HistoryStore>()(set => ({
         if (gameIndex !== -1) {
           const game = newGames[gameIndex]
           game.movements.push(movement)
+          newGames[gameIndex] = game
+
+          updateGame(game)
+        }
+
+        return { games: newGames }
+      }),
+    clearGame: gameId =>
+      set(state => {
+        const newGames = [...state.games]
+        const gameIndex = newGames.findIndex(g => g.id === gameId)
+
+        if (gameIndex !== -1) {
+          const game = newGames[gameIndex]
+          game.movements = game.movements.filter(movement => movement.isInitial)
           newGames[gameIndex] = game
 
           updateGame(game)
