@@ -10,7 +10,7 @@
     "clear": "Clear",
     "completedModal": {
       "title": "COMPLETED",
-      "description": "You have completed the SODOKU. CONGRATULATIONS, YOU ARE OFFICIALLY AMAZING!!!"
+      "description": "You have completed the SUDOKU. CONGRATULATIONS, YOU ARE OFFICIALLY AMAZING!!!"
     }
   },
   "history": {
