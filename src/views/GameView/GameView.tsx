@@ -101,9 +101,11 @@ const GameView = () => {
         onFieldChange={handleFieldChange}
       />
       <div className='p-8 flex items-center justify-center gap-4'>
-        <Button onClick={handleClearClick} rounded hoverEffect>
-          {t('clear')}
-        </Button>
+        {!gameCompleted ? (
+          <Button onClick={handleClearClick} rounded hoverEffect>
+            {t('clear')}
+          </Button>
+        ) : null}
       </div>
       {gameCompleted && <CompletedModal />}
     </div>
