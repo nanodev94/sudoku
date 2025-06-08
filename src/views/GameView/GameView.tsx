@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { useTranslations } from 'next-intl'
 
 import BackLink from '@/components/BackLink'
@@ -15,8 +15,11 @@ import {
   isValidField,
 } from '@/utils/board'
 
+import CompletedModal from './components/CompletedModal'
+
 const GameView = () => {
   const t = useTranslations('game')
+  const [gameCompleted, setGameCompleted] = useState(false)
 
   const {
     id,
@@ -78,6 +81,7 @@ const GameView = () => {
 
       if (checkBoardCompleted(gameBoard)) {
         completeGame(id)
+        setGameCompleted(true)
       }
     }
   }
@@ -101,6 +105,7 @@ const GameView = () => {
           {t('clear')}
         </Button>
       </div>
+      {gameCompleted && <CompletedModal />}
     </div>
   )
 }
