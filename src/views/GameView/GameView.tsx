@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react'
 import { useTranslations } from 'next-intl'
+import clsx from 'clsx'
 
 import BackLink from '@/components/BackLink'
 import Board from '@/components/Board'
@@ -95,6 +96,17 @@ const GameView = () => {
           {t('movements')} {movements}
         </span>
       </div>
+      {gameCompleted ? (
+        <div className='pb-5 flex items-center justify-center'>
+          <span
+            className={clsx(
+              'self-end bg-green-600 py-1 px-8 font-bold rounded-full'
+            )}
+          >
+            {t('completedModal.title')}
+          </span>
+        </div>
+      ) : null}
       <Board
         gameBoard={gameBoard}
         fieldsEditable={!gameCompleted}
