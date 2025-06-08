@@ -59,6 +59,30 @@ export const addGame = (game: Game): Promise<Game | string | null> => {
   })
 }
 
+export const updateGame = (game: Game): Promise<Game | string | null> => {
+  return new Promise(resolve => {
+    request = indexedDB.open(DB_NAME)
+
+    request.onsuccess = () => {
+      // db = request.result
+      const tx = db.transaction(DB_OBJET_STORE, 'readwrite')
+      const store = tx.objectStore(DB_OBJET_STORE)
+      store.put(game)
+      console.log('request.onsuccess - updateData', game)
+      resolve(game)
+    }
+
+    request.onerror = () => {
+      const error = request.error?.message
+      if (error) {
+        resolve(error)
+      } else {
+        resolve('Unknown error')
+      }
+    }
+  })
+}
+
 export const getGamesData = (): Promise<Game[]> => {
   return new Promise(resolve => {
     request = indexedDB.open(DB_NAME)

@@ -1,6 +1,7 @@
 'use client'
 
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
+import { useTranslations } from 'next-intl'
 
 import { getGamesData, initDB } from '@/indexedDB'
 import useHistoryStore from '@/stores/history.store'
@@ -14,6 +15,9 @@ if (typeof window !== 'undefined') {
 }
 
 const ContextWrapper = ({ children }: Props) => {
+  const t = useTranslations()
+  const [loading, setLoading] = useState(true)
+
   const {
     actions: { setGames },
   } = useHistoryStore()
@@ -21,11 +25,14 @@ const ContextWrapper = ({ children }: Props) => {
   const initHistory = async () => {
     const games = await getGamesData()
     setGames(games)
+    setLoading(false)
   }
 
   useEffect(() => {
     initHistory()
   }, [])
+
+  if (loading) return <span>{t('loading')}</span>
 
   return children
 }

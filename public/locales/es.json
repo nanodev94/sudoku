@@ -7,11 +7,16 @@
   "game": {
     "back": "Volver",
     "movements": "Movimientos:",
-    "clear": "Limpiar"
+    "clear": "Limpiar",
+    "completedModal": {
+      "title": "COMPLETADO",
+      "description": "Has completado el SUDOKU. ¡¡¡ENHORABUENA, ERES OFICIALMENTE INCREÍBLE!!!"
+    }
   },
   "history": {
     "back": "Volver",
     "title": "Historial",
     "completed": "COMPLETADO"
-  }
+  },
+  "loading": "Cargando..."
 }

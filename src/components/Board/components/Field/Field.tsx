@@ -1,46 +1,40 @@
 import clsx from 'clsx'
 
-import { EMPTY_FIELD, FIELD_VALID_NUMBERS } from '@/constants'
-import useGameStore from '@/stores/game.store'
-import { isValidField } from '@/utils/board'
+import { EMPTY_FIELD } from '@/constants'
 
 interface Props {
   row: number
   col: number
   value: number
+  isInitial: boolean
   className?: string
+  editable?: boolean
+  onFieldChange?: (
+    e: React.ChangeEvent<HTMLInputElement>,
+    row: number,
+    col: number
+  ) => void
 }
 
-const Field = ({ row, col, value, className }: Props) => {
-  const {
-    initialBoard,
-    gameBoard,
-    actions: { setField },
-  } = useGameStore()
-
-  const isInitialField = initialBoard[row][col] !== EMPTY_FIELD
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const newValue = parseInt(e.target.value) || EMPTY_FIELD
-    const isValid =
-      FIELD_VALID_NUMBERS.includes(newValue) &&
-      isValidField({ row, col, value: newValue }, gameBoard)
-
-    if (newValue === EMPTY_FIELD || isValid) {
-      setField(row, col, newValue)
-    }
-  }
-
+const Field = ({
+  row,
+  col,
+  value,
+  isInitial,
+  className,
+  editable,
+  onFieldChange,
+}: Props) => {
   return (
     <input
       className={clsx(
         'border-2 size-20 text-center font-bold text-2xl [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none',
-        isInitialField ? 'bg-field-block' : 'bg-field',
-        value === EMPTY_FIELD && 'hover:bg-field-hover duration-300',
+        isInitial ? 'bg-field-block' : 'bg-field',
+        !isInitial && editable && 'hover:bg-field-hover duration-300',
         className
       )}
-      disabled={isInitialField}
-      onChange={handleChange}
+      disabled={isInitial || !editable}
+      onChange={e => onFieldChange?.(e, row, col)}
       type='number'
       value={value === EMPTY_FIELD ? '' : value}
     />
