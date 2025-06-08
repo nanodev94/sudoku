@@ -4,6 +4,7 @@ import Field from './components/Field'
 
 interface Props {
   gameBoard: number[][]
+  fieldsEditable?: boolean
   initialBoard?: number[][]
   onFieldChange?: (
     e: React.ChangeEvent<HTMLInputElement>,
@@ -12,7 +13,12 @@ interface Props {
   ) => void
 }
 
-const Board = ({ gameBoard, initialBoard, onFieldChange }: Props) => {
+const Board = ({
+  gameBoard,
+  fieldsEditable = true,
+  initialBoard,
+  onFieldChange,
+}: Props) => {
   return (
     <div className='flex flex-col border-8'>
       {gameBoard.map((row, rowIndex) => (
@@ -27,6 +33,7 @@ const Board = ({ gameBoard, initialBoard, onFieldChange }: Props) => {
               row={rowIndex}
               col={colIndex}
               value={fieldVal}
+              editable={fieldsEditable}
               isInitial={initialBoard?.[rowIndex][colIndex] !== EMPTY_FIELD}
               onFieldChange={onFieldChange}
             />

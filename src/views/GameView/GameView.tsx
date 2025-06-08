@@ -97,6 +97,7 @@ const GameView = () => {
       </div>
       <Board
         gameBoard={gameBoard}
+        fieldsEditable={!gameCompleted}
         initialBoard={initialBoard}
         onFieldChange={handleFieldChange}
       />

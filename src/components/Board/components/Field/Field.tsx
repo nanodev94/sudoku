@@ -8,6 +8,7 @@ interface Props {
   value: number
   isInitial: boolean
   className?: string
+  editable?: boolean
   onFieldChange?: (
     e: React.ChangeEvent<HTMLInputElement>,
     row: number,
@@ -21,6 +22,7 @@ const Field = ({
   value,
   isInitial,
   className,
+  editable,
   onFieldChange,
 }: Props) => {
   return (
@@ -28,10 +30,10 @@ const Field = ({
       className={clsx(
         'border-2 size-20 text-center font-bold text-2xl [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none',
         isInitial ? 'bg-field-block' : 'bg-field',
-        value === EMPTY_FIELD && 'hover:bg-field-hover duration-300',
+        !isInitial && editable && 'hover:bg-field-hover duration-300',
         className
       )}
-      disabled={isInitial}
+      disabled={isInitial || !editable}
       onChange={e => onFieldChange?.(e, row, col)}
       type='number'
       value={value === EMPTY_FIELD ? '' : value}
