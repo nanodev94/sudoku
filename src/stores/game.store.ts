@@ -12,6 +12,12 @@ type GameStore = {
     reset: () => void
     clearGameBoard: () => void
     initGame: (id: number, board: number[][]) => void
+    loadGame: (
+      id: number,
+      initialBoard: number[][],
+      gameBoard: number[][],
+      movements: number
+    ) => void
     setField: (row: number, col: number, val: number) => void
   }
 }
@@ -40,6 +46,13 @@ const useGameStore = create<GameStore>()(set => ({
         initialBoard: copyBoard(board),
         gameBoard: copyBoard(board),
         movements: 0,
+      })),
+    loadGame: (id, initialBoard, gameBoard, movements) =>
+      set(() => ({
+        id,
+        initialBoard: copyBoard(initialBoard),
+        gameBoard: copyBoard(gameBoard),
+        movements,
       })),
     setField: (row, col, val) =>
       set(state => {
