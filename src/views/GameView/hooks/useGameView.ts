@@ -19,7 +19,8 @@ const useGameView = () => {
     movements,
     gameBoard,
     initialBoard,
-    actions: { clearGameBoard, initGame, loadGame, setField },
+    playAgain,
+    actions: { clearGameBoard, initGame, loadGame, setField, setPlayAgain },
   } = useGameStore()
 
   const {
@@ -62,12 +63,16 @@ const useGameView = () => {
 
   // Init game
   useEffect(() => {
-    const lastGame = games[games.length - 1]
-
-    if (lastGame.completed) {
-      createNewGame()
+    if (playAgain) {
+      setPlayAgain(false)
     } else {
-      setShowContinueModal(true)
+      const lastGame = games[games.length - 1]
+
+      if (lastGame.completed) {
+        createNewGame()
+      } else {
+        setShowContinueModal(true)
+      }
     }
   }, [])
 

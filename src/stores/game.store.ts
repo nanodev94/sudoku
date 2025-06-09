@@ -8,6 +8,7 @@ type GameStore = {
   initialBoard: number[][]
   gameBoard: number[][]
   movements: number
+  playAgain: boolean
   actions: {
     reset: () => void
     clearGameBoard: () => void
@@ -19,6 +20,7 @@ type GameStore = {
       movements: number
     ) => void
     setField: (row: number, col: number, val: number) => void
+    setPlayAgain: (playAgain: boolean) => void
   }
 }
 
@@ -27,6 +29,7 @@ const useGameStore = create<GameStore>()(set => ({
   initialBoard: copyBoard(EMPTY_BOARD),
   gameBoard: copyBoard(EMPTY_BOARD),
   movements: 0,
+  playAgain: false,
   actions: {
     reset: () =>
       set(() => ({
@@ -34,6 +37,7 @@ const useGameStore = create<GameStore>()(set => ({
         initialBoard: copyBoard(EMPTY_BOARD),
         gameBoard: copyBoard(EMPTY_BOARD),
         movements: 0,
+        playAgain: false,
       })),
     clearGameBoard: () =>
       set(state => ({
@@ -58,6 +62,10 @@ const useGameStore = create<GameStore>()(set => ({
       set(state => {
         state.gameBoard[row][col] = val
         return { gameBoard: state.gameBoard, movements: state.movements + 1 }
+      }),
+    setPlayAgain: playAgain =>
+      set(() => {
+        return { playAgain }
       }),
   },
 }))

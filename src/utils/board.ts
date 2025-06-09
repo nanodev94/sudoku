@@ -89,7 +89,7 @@ export const movementsToBoards = (movements: GameMovement[]) => {
     }
   })
 
-  const movementNumber = movements[movements.length - 1].movementNumber ?? -1
+  const movementNumber = movements[movements.length - 1].movementNumber ?? 0
 
   return { initialBoard, gameBoard, movementNumber }
 }

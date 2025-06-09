@@ -26,7 +26,8 @@
   },
   "historyGame": {
     "back": "Volver",
-    "movements": "Movimientos:"
+    "movements": "Movimientos:",
+    "playAgain": "Jugar otra vez"
   },
   "loading": "Cargando..."
 }
