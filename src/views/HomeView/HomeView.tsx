@@ -1,14 +1,24 @@
 'use client'
 
+import { useEffect } from 'react'
 import { useTranslations } from 'next-intl'
 
 import Button from '@/components/Button'
 import { PAGE } from '@/constants'
 import { useRouter } from '@/i18n/navigation'
+import useGameStore from '@/stores/game.store'
 
 const HomeView = () => {
   const t = useTranslations('home')
   const { push } = useRouter()
+
+  const {
+    actions: { reset },
+  } = useGameStore()
+
+  useEffect(() => {
+    reset()
+  }, [])
 
   const handlePlayClick = () => push(PAGE.GAME)
 
