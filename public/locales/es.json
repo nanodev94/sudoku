@@ -11,6 +11,12 @@
     "completedModal": {
       "title": "COMPLETADO",
       "description": "Has completado el SUDOKU. ¡¡¡ENHORABUENA, ERES OFICIALMENTE INCREÍBLE!!!"
+    },
+    "continueModal": {
+      "title": "CONTINUAR ÚLTIMA PARTIDA",
+      "description": "Hay una partida incompleta. ¿Quieres continuar la partida?",
+      "yesButton": "SI",
+      "noButton": "NO"
     }
   },
   "history": {

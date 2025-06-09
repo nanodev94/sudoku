@@ -11,6 +11,12 @@
     "completedModal": {
       "title": "COMPLETED",
       "description": "You have completed the SUDOKU. CONGRATULATIONS, YOU ARE OFFICIALLY AMAZING!!!"
+    },
+    "continueModal": {
+      "title": "CONTINUE LAST GAME",
+      "description": "There is an uncompleted game. Do you want to continue it?",
+      "yesButton": "YES",
+      "noButton": "NO"
     }
   },
   "history": {
