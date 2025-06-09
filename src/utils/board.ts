@@ -1,4 +1,5 @@
 import { FIELD_VALID_NUMBERS } from '@/constants'
+import type { GameMovement } from '@/stores/history.store'
 
 export const copyBoard = (board: number[][]) => {
   return board.map(row => row.slice())
@@ -75,4 +76,20 @@ export const isValidField = (
   }
 
   return true
+}
+
+export const movementsToBoards = (movements: GameMovement[]) => {
+  const initialBoard = getEmptyBoard()
+  const gameBoard = getEmptyBoard()
+
+  movements.forEach(({ isInitial, field: { row, col, value } }) => {
+    gameBoard[row][col] = value
+    if (isInitial) {
+      initialBoard[row][col] = value
+    }
+  })
+
+  const movementNumber = movements[movements.length - 1].movementNumber ?? -1
+
+  return { initialBoard, gameBoard, movementNumber }
 }
