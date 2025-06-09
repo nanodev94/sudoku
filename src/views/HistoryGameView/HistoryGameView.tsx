@@ -15,7 +15,7 @@ interface Props {
 }
 
 const HistoryGameView = ({ gameId }: Props) => {
-  const t = useTranslations('game')
+  const t = useTranslations('historyGame')
 
   const {
     id,
