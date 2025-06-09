@@ -24,5 +24,10 @@
     "title": "Historial",
     "completed": "COMPLETADO"
   },
+  "historyGame": {
+    "back": "Volver",
+    "movements": "Movimientos:",
+    "playAgain": "Jugar otra vez"
+  },
   "loading": "Cargando..."
 }

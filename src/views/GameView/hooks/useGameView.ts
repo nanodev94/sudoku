@@ -5,9 +5,9 @@ import useGameStore from '@/stores/game.store'
 import useHistoryStore from '@/stores/history.store'
 import {
   checkBoardCompleted,
-  getEmptyBoard,
   getRandomBoard,
   isValidField,
+  movementsToBoards,
 } from '@/utils/board'
 
 const useGameView = () => {
@@ -19,7 +19,8 @@ const useGameView = () => {
     movements,
     gameBoard,
     initialBoard,
-    actions: { clearGameBoard, initGame, loadGame, setField },
+    playAgain,
+    actions: { clearGameBoard, initGame, loadGame, setField, setPlayAgain },
   } = useGameStore()
 
   const {
@@ -49,32 +50,29 @@ const useGameView = () => {
   }
 
   const loadLastGame = () => {
-    const lastInitialBoard = getEmptyBoard()
-    const lastGameBoard = getEmptyBoard()
-
     const lastGame = games[games.length - 1]
-    let movementNumber = 0
+    const lastBoards = movementsToBoards(lastGame.movements)
 
-    lastGame.movements.forEach(({ isInitial, field: { row, col, value } }) => {
-      lastGameBoard[row][col] = value
-      if (isInitial) {
-        lastInitialBoard[row][col] = value
-      } else {
-        movementNumber++
-      }
-    })
-
-    loadGame(lastGame.id, lastInitialBoard, lastGameBoard, movementNumber)
+    loadGame(
+      lastGame.id,
+      lastBoards.initialBoard,
+      lastBoards.gameBoard,
+      lastBoards.movementNumber
+    )
   }
 
   // Init game
   useEffect(() => {
-    const lastGame = games[games.length - 1]
-
-    if (lastGame.completed) {
-      createNewGame()
+    if (playAgain) {
+      setPlayAgain(false)
     } else {
-      setShowContinueModal(true)
+      const lastGame = games[games.length - 1]
+
+      if (lastGame.completed) {
+        createNewGame()
+      } else {
+        setShowContinueModal(true)
+      }
     }
   }, [])
 

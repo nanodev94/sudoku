@@ -24,5 +24,10 @@
     "title": "History",
     "completed": "COMPLETED"
   },
+  "historyGame": {
+    "back": "Go back",
+    "movements": "Movements:",
+    "playAgain": "Play again"
+  },
   "loading": "Loading..."
 }
