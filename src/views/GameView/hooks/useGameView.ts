@@ -38,7 +38,7 @@ const useGameView = () => {
   } = useHistoryStore()
 
   const createNewGame = () => {
-    const gameId = games[games.length - 1].id + 1
+    const gameId = (games[games.length - 1]?.id ?? 0) + 1
     const board = getRandomBoard()
     const game = {
       id: gameId,
@@ -77,7 +77,7 @@ const useGameView = () => {
     } else {
       const lastGame = games[games.length - 1]
 
-      if (lastGame.completed) {
+      if (!lastGame || lastGame.completed) {
         createNewGame()
       } else {
         setShowContinueModal(true)

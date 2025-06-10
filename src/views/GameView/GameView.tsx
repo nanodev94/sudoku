@@ -32,7 +32,7 @@ const GameView = () => {
   } = useGameView()
 
   return (
-    <div className='bg-gray-700 m-auto p-12 rounded-2xl'>
+    <div className='bg-gray-700 m-auto p-12 rounded-2xl animate-scale'>
       <BackLink href={PAGE.HOME}>{t('back')}</BackLink>
       <div className='flex items-center justify-between py-5 px-2 text-xl font-bold'>
         <span>#{id === -1 ? '' : id}</span>
