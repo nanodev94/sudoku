@@ -9,6 +9,16 @@ export const checkBoardCompleted = (board: number[][]) => {
   return !board.some(row => row.some(value => value === -1))
 }
 
+export const getValidNumbers = (
+  row: number,
+  col: number,
+  board: number[][]
+) => {
+  return FIELD_VALID_NUMBERS.filter(value =>
+    isValidField({ row, col, value }, board)
+  )
+}
+
 export const getEmptyBoard = () => {
   return [
     [-1, -1, -1, -1, -1, -1, -1, -1, -1],

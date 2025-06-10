@@ -6,6 +6,7 @@ import clsx from 'clsx'
 import BackLink from '@/components/BackLink'
 import Board from '@/components/Board'
 import Button from '@/components/Button'
+import FieldSelectorModal from '@/components/FieldSelectorModal'
 import { PAGE } from '@/constants'
 
 import CompletedModal from './components/CompletedModal'
@@ -16,12 +17,15 @@ const GameView = () => {
   const t = useTranslations('game')
   const {
     showContinueModal,
+    selectorModal,
     gameCompleted,
     id,
     movements,
     initialBoard,
     gameBoard,
-    handleFieldChange,
+    handleFieldClick,
+    handleSelectorNumberClose,
+    handleSelectorNumberClick,
     handleClearClick,
     handleYesContinueClick,
     handleNoContinueClick,
@@ -51,7 +55,7 @@ const GameView = () => {
         gameBoard={gameBoard}
         fieldsEditable={!gameCompleted}
         initialBoard={initialBoard}
-        onFieldChange={handleFieldChange}
+        onFieldClick={handleFieldClick}
       />
       <div className='p-8 flex items-center justify-center gap-4'>
         {!gameCompleted ? (
@@ -60,13 +64,22 @@ const GameView = () => {
           </Button>
         ) : null}
       </div>
-      {gameCompleted && <CompletedModal />}
-      {showContinueModal && (
+      {gameCompleted ? <CompletedModal /> : null}
+      {showContinueModal ? (
         <ContinueModal
           onYesClick={handleYesContinueClick}
           onNoClick={handleNoContinueClick}
         />
-      )}
+      ) : null}
+      {selectorModal.visible ? (
+        <FieldSelectorModal
+          top={selectorModal.top}
+          left={selectorModal.left}
+          onClose={handleSelectorNumberClose}
+          onNumberClick={handleSelectorNumberClick}
+          validNumbers={selectorModal.validNumbers}
+        />
+      ) : null}
     </div>
   )
 }

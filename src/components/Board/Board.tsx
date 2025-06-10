@@ -6,18 +6,14 @@ interface Props {
   gameBoard: number[][]
   fieldsEditable?: boolean
   initialBoard?: number[][]
-  onFieldChange?: (
-    e: React.ChangeEvent<HTMLInputElement>,
-    row: number,
-    col: number
-  ) => void
+  onFieldClick?: (row: number, col: number, top: number, left: number) => void
 }
 
 const Board = ({
   gameBoard,
   fieldsEditable = true,
   initialBoard,
-  onFieldChange,
+  onFieldClick,
 }: Props) => {
   return (
     <div className='flex flex-col border-8'>
@@ -35,7 +31,7 @@ const Board = ({
               value={fieldVal}
               editable={fieldsEditable}
               isInitial={initialBoard?.[rowIndex][colIndex] !== EMPTY_FIELD}
-              onFieldChange={onFieldChange}
+              onFieldClick={onFieldClick}
             />
           ))}
         </div>
