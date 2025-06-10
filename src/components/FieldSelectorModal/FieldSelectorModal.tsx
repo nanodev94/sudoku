@@ -28,6 +28,14 @@ const FieldSelectorModal = ({
     setHide(true)
   }
 
+  const handleNumberClick = (
+    e: React.MouseEvent<HTMLButtonElement>,
+    num: number
+  ) => {
+    e.stopPropagation()
+    onNumberClick?.(num)
+  }
+
   if (hide) return null
 
   return createPortal(
@@ -47,7 +55,7 @@ const FieldSelectorModal = ({
                   ? 'bg-red-400 cursor-default'
                   : 'bg-gray-800 cursor-pointer'
               }
-              onClick={() => onNumberClick?.(num)}
+              onClick={e => handleNumberClick(e, num)}
             >
               {num}
             </button>
