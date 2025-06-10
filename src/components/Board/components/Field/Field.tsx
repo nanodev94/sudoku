@@ -1,3 +1,6 @@
+'use client'
+
+import { useRef } from 'react'
 import clsx from 'clsx'
 
 import { EMPTY_FIELD } from '@/constants'
@@ -9,11 +12,7 @@ interface Props {
   isInitial: boolean
   className?: string
   editable?: boolean
-  onFieldChange?: (
-    e: React.ChangeEvent<HTMLInputElement>,
-    row: number,
-    col: number
-  ) => void
+  onFieldClick?: (row: number, col: number, top: number, left: number) => void
 }
 
 const Field = ({
@@ -23,21 +22,34 @@ const Field = ({
   isInitial,
   className,
   editable,
-  onFieldChange,
+  onFieldClick,
 }: Props) => {
+  const ref = useRef<HTMLButtonElement | null>(null)
+
+  const handleFieldClick = () => {
+    if (ref.current) {
+      const { top, left, width, height } = ref.current.getBoundingClientRect()
+      const centerTop = top + height / 2
+      const centerLeft = left + width / 2
+      onFieldClick?.(row, col, centerTop, centerLeft)
+    }
+  }
+
   return (
-    <input
+    <button
       className={clsx(
         'border-2 size-20 text-center font-bold text-2xl [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none',
         isInitial ? 'bg-field-block' : 'bg-field',
-        !isInitial && editable && 'hover:bg-field-hover duration-300',
+        !isInitial &&
+          editable &&
+          'hover:bg-field-hover duration-300 cursor-pointer',
         className
       )}
-      disabled={isInitial || !editable}
-      onChange={e => onFieldChange?.(e, row, col)}
-      type='number'
-      value={value === EMPTY_FIELD ? '' : value}
-    />
+      onClick={handleFieldClick}
+      ref={ref}
+    >
+      {value === EMPTY_FIELD ? '' : value}
+    </button>
   )
 }
 

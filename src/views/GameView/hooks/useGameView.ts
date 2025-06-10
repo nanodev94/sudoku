@@ -6,12 +6,21 @@ import useHistoryStore from '@/stores/history.store'
 import {
   checkBoardCompleted,
   getRandomBoard,
+  getValidNumbers,
   isValidField,
   movementsToBoards,
 } from '@/utils/board'
 
 const useGameView = () => {
   const [showContinueModal, setShowContinueModal] = useState(false)
+  const [selectorModal, setSelectorModal] = useState({
+    visible: false,
+    row: -1,
+    col: -1,
+    top: 0,
+    left: 0,
+    validNumbers: [] as number[],
+  })
   const [gameCompleted, setGameCompleted] = useState(false)
 
   const {
@@ -81,29 +90,56 @@ const useGameView = () => {
     clearGame(id)
   }
 
-  const handleFieldChange = (
-    e: React.ChangeEvent<HTMLInputElement>,
-    row: number,
-    col: number
-  ) => {
-    const newValue = parseInt(e.target.value) || EMPTY_FIELD
-    const field = { row, col, value: newValue }
+  const handleSelectorNumberClose = () =>
+    setSelectorModal({
+      visible: false,
+      row: -1,
+      col: -1,
+      top: 0,
+      left: 0,
+      validNumbers: [],
+    })
+
+  const handleSelectorNumberClick = (value: number) => {
+    const { row, col } = selectorModal
+    const field = { row, col, value }
     const isValid = isValidField(field, gameBoard)
 
-    if (newValue === EMPTY_FIELD || isValid) {
-      const movement = {
-        movementNumber: movements + 1,
-        field,
+    if (value === EMPTY_FIELD || isValid) {
+      if (gameBoard[row][col] !== EMPTY_FIELD || value !== EMPTY_FIELD) {
+        const movement = {
+          movementNumber: movements + 1,
+          field,
+        }
+
+        addMovementToGame(id, movement)
+        setField(row, col, value)
+
+        if (checkBoardCompleted(gameBoard)) {
+          completeGame(id)
+          setGameCompleted(true)
+        }
       }
 
-      addMovementToGame(id, movement)
-      setField(row, col, newValue)
-
-      if (checkBoardCompleted(gameBoard)) {
-        completeGame(id)
-        setGameCompleted(true)
-      }
+      setSelectorModal({
+        visible: false,
+        row: -1,
+        col: -1,
+        top: 0,
+        left: 0,
+        validNumbers: [],
+      })
     }
+  }
+
+  const handleFieldClick = (
+    row: number,
+    col: number,
+    top: number,
+    left: number
+  ) => {
+    const validNumbers = getValidNumbers(row, col, gameBoard)
+    setSelectorModal({ visible: true, row, col, top, left, validNumbers })
   }
 
   const handleYesContinueClick = () => {
@@ -118,12 +154,15 @@ const useGameView = () => {
 
   return {
     showContinueModal,
+    selectorModal,
     gameCompleted,
     id,
     movements,
     initialBoard,
     gameBoard,
-    handleFieldChange,
+    handleFieldClick,
+    handleSelectorNumberClose,
+    handleSelectorNumberClick,
     handleClearClick,
     handleYesContinueClick,
     handleNoContinueClick,
