@@ -1,5 +1,6 @@
 import { FIELD_VALID_NUMBERS } from '@/constants'
 import type { GameMovement } from '@/stores/history.store'
+import { SUDOKUS } from '@/sudokus'
 
 export const copyBoard = (board: number[][]) => {
   return board.map(row => row.slice())
@@ -34,31 +35,8 @@ export const getEmptyBoard = () => {
 }
 
 export const getRandomBoard = () => {
-  // TODO: get random board
-  /* SOLUTION
-    9 5 7 | 6 1 3 | 2 8 4
-    4 8 3 | 2 5 7 | 1 9 6
-    6 1 2 | 8 4 9 | 5 3 7
-    ---------------------
-    1 7 8 | 3 6 4 | 9 5 2
-    5 2 4 | 9 7 1 | 3 6 8
-    3 6 9 | 5 2 8 | 7 4 1
-    ---------------------
-    8 4 5 | 7 9 2 | 6 1 3
-    2 9 1 | 4 3 6 | 8 7 5
-    7 3 6 | 1 8 5 | 4 2 9
-  */
-  return [
-    [9, 5, 7, 6, 1, 3, 2, -1, -1],
-    [-1, 8, -1, -1, -1, 7, -1, 9, -1],
-    [6, 1, 2, 8, 4, 9, 5, 3, 7],
-    [-1, 7, -1, -1, 6, -1, -1, -1, -1],
-    [5, 2, 4, 9, 7, 1, 3, 6, 8],
-    [-1, -1, -1, -1, 2, -1, -1, 4, -1],
-    [8, 4, 5, 7, 9, 2, 6, 1, 3],
-    [2, 9, 1, 4, 3, 6, 8, 7, 5],
-    [7, 3, 6, 1, 8, 5, 4, 2, 9],
-  ]
+  const pos = Math.ceil((SUDOKUS.length - 1) * Math.random())
+  return SUDOKUS[pos]
 }
 
 export const isValidField = (
