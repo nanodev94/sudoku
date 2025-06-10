@@ -1,5 +1,6 @@
 'use client'
 
+import { useEffect } from 'react'
 import { useTranslations } from 'next-intl'
 
 import BackLink from '@/components/BackLink'
@@ -11,6 +12,10 @@ import HistoryItem from './components/HistoryItem'
 const HistoryView = () => {
   const t = useTranslations('history')
   const { games } = useHistoryStore()
+
+  useEffect(() => {
+    window.scrollTo({ top: 0 })
+  }, [])
 
   return (
     <div className='bg-gray-700 m-auto p-12 my-12 rounded-2xl min-w-160 animate-scale'>
