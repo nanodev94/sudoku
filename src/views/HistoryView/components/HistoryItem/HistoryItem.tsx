@@ -19,14 +19,14 @@ const HistoryItem = ({ id, completed, date }: Props) => {
 
   return (
     <Link href={`${PAGE.HISTORY}/${id}`}>
-      <div className='flex items-center justify-between bg-gray-500 p-8 rounded-xl'>
+      <div className='flex flex-col items-start justify-between gap-2 bg-gray-500 p-8 rounded-xl sm:flex-row sm:items-center'>
         <span>
           #{id} - <span>{formatDate(locale, date)}</span>
         </span>
         {completed ? (
           <span
             className={clsx(
-              'self-end bg-green-600 py-1 px-8 font-bold rounded-full'
+              'self-start bg-green-600 py-1 px-8 font-bold rounded-full sm:self-end'
             )}
           >
             {t('completed')}

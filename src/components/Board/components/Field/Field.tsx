@@ -38,7 +38,7 @@ const Field = ({
   return (
     <button
       className={clsx(
-        'border-2 size-20 text-center font-bold text-2xl [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none',
+        'border-2 size-8 text-center font-bold text-xl sm:size-12 sm:text-2xl md:size-18 md:text-3xl',
         isInitial ? 'bg-field-block' : 'bg-field',
         !isInitial &&
           editable &&

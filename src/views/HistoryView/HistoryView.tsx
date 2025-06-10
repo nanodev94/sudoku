@@ -18,7 +18,7 @@ const HistoryView = () => {
   }, [])
 
   return (
-    <div className='bg-gray-700 m-auto p-12 my-12 rounded-2xl min-w-160 animate-scale'>
+    <div className='bg-gray-700 m-auto p-12 my-12 rounded-2xl min-w-full animate-scale md:min-w-160'>
       <BackLink href={PAGE.HOME}>{t('back')}</BackLink>
       <div className='flex flex-col gap-2 pt-8'>
         {games.map(({ id, completed, date }) => (
