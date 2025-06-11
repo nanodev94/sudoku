@@ -2,7 +2,8 @@
   "home": {
     "history": "Historial",
     "play": "Jugar",
-    "title": "SUDOKU"
+    "title": "SUDOKU",
+    "solve": "Resolver"
   },
   "game": {
     "back": "Volver",
@@ -28,6 +29,10 @@
     "back": "Volver",
     "movements": "Movimientos:",
     "playAgain": "Jugar otra vez"
+  },
+  "solve": {
+    "back": "Volver",
+    "solve": "Resolver"
   },
   "loading": "Cargando..."
 }

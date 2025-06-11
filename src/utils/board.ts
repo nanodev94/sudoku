@@ -1,4 +1,4 @@
-import { FIELD_VALID_NUMBERS } from '@/constants'
+import { EMPTY_FIELD, FIELD_VALID_NUMBERS } from '@/constants'
 import type { GameMovement } from '@/stores/history.store'
 import { SUDOKUS } from '@/sudokus'
 
@@ -80,4 +80,28 @@ export const movementsToBoards = (movements: GameMovement[]) => {
   const movementNumber = movements[movements.length - 1].movementNumber ?? 0
 
   return { initialBoard, gameBoard, movementNumber }
+}
+
+export const solveSudoku = (
+  board: number[][],
+  row = 0,
+  col = 0
+): number[][] => {
+  if (col === 9) return solveSudoku(board, row + 1, 0)
+  if (row === 9) return board
+  if (board[row][col] !== EMPTY_FIELD) return solveSudoku(board, row, col + 1)
+
+  const validNumbers = getValidNumbers(row, col, board)
+  if (validNumbers.length === 0) return board
+
+  for (const validNum of validNumbers) {
+    board[row][col] = validNum
+    const resBoard = solveSudoku(board, row, col + 1)
+    if (checkBoardCompleted(resBoard)) {
+      return resBoard
+    }
+    board[row][col] = EMPTY_FIELD
+  }
+
+  return board
 }

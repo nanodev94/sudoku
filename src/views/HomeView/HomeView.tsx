@@ -21,8 +21,8 @@ const HomeView = () => {
   }, [])
 
   const handlePlayClick = () => push(PAGE.GAME)
-
   const handleHistoryClick = () => push(PAGE.HISTORY)
+  const handleSolveClick = () => push(PAGE.SOLVE)
 
   return (
     <div className='bg-gray-700 p-16 m-auto max-w-160 w-full h-fit flex flex-col items-center gap-8 rounded-xl animate-scale'>
@@ -45,6 +45,15 @@ const HomeView = () => {
           rounded
         >
           {t('history')}
+        </Button>
+        <Button
+          className='text-3xl font-bold py-6'
+          hoverEffect
+          onClick={handleSolveClick}
+          large
+          rounded
+        >
+          {t('solve')}
         </Button>
       </div>
     </div>
