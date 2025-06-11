@@ -32,7 +32,8 @@
   },
   "solve": {
     "back": "Volver",
-    "solve": "Resolver"
+    "solve": "Resolver",
+    "clear": "Limpiar"
   },
   "loading": "Cargando..."
 }

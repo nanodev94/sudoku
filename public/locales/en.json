@@ -32,7 +32,8 @@
   },
   "solve": {
     "back": "Go back",
-    "solve": "Solve"
+    "solve": "Solve",
+    "clear": "Clear"
   },
   "loading": "Loading..."
 }

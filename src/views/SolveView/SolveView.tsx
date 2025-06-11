@@ -29,9 +29,13 @@ const SolveView = () => {
     validNumbers: [] as number[],
   })
 
-  useEffect(() => {
+  const initView = () => {
     const emptyBoard = getEmptyBoard()
     initGame(-1, emptyBoard)
+  }
+
+  useEffect(() => {
+    initView()
   }, [])
 
   const {
@@ -40,14 +44,21 @@ const SolveView = () => {
     actions: { initGame, loadGame, setField },
   } = useGameStore()
 
+  const handleClearClick = () => {
+    initView()
+    setEditing(true)
+  }
+
   const handleFieldClick = (
     row: number,
     col: number,
     top: number,
     left: number
   ) => {
-    const validNumbers = getValidNumbers(row, col, gameBoard)
-    setSelectorModal({ visible: true, row, col, top, left, validNumbers })
+    if (editing) {
+      const validNumbers = getValidNumbers(row, col, gameBoard)
+      setSelectorModal({ visible: true, row, col, top, left, validNumbers })
+    }
   }
 
   const handleSelectorNumberClose = () =>
@@ -98,9 +109,15 @@ const SolveView = () => {
         onFieldClick={handleFieldClick}
       />
       <div className='mt-4 flex items-center justify-center gap-4'>
-        <Button onClick={handleSolveClick} rounded hoverEffect>
-          {t('solve')}
-        </Button>
+        {editing ? (
+          <Button onClick={handleSolveClick} rounded hoverEffect>
+            {t('solve')}
+          </Button>
+        ) : (
+          <Button onClick={handleClearClick} rounded hoverEffect>
+            {t('clear')}
+          </Button>
+        )}
       </div>
 
       {selectorModal.visible ? (
