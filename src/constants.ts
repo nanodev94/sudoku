@@ -4,6 +4,7 @@ export enum PAGE {
   HOME = '/',
   GAME = '/game',
   HISTORY = '/history',
+  SOLVE = '/solve',
 }
 
 export const TWITTER_DATA = {
