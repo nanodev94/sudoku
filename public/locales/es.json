@@ -1,0 +1,39 @@
+{
+  "home": {
+    "history": "Historial",
+    "play": "Jugar",
+    "title": "SUDOKU",
+    "solve": "Resolver"
+  },
+  "game": {
+    "back": "Volver",
+    "movements": "Movimientos:",
+    "clear": "Limpiar",
+    "completedModal": {
+      "title": "COMPLETADO",
+      "description": "Has completado el SUDOKU. ¡¡¡ENHORABUENA, ERES OFICIALMENTE INCREÍBLE!!!"
+    },
+    "continueModal": {
+      "title": "CONTINUAR ÚLTIMA PARTIDA",
+      "description": "Hay una partida incompleta. ¿Quieres continuar la partida?",
+      "yesButton": "SI",
+      "noButton": "NO"
+    }
+  },
+  "history": {
+    "back": "Volver",
+    "title": "Historial",
+    "completed": "COMPLETADO"
+  },
+  "historyGame": {
+    "back": "Volver",
+    "movements": "Movimientos:",
+    "playAgain": "Jugar otra vez"
+  },
+  "solve": {
+    "back": "Volver",
+    "solve": "Resolver",
+    "clear": "Limpiar"
+  },
+  "loading": "Cargando..."
+}
